@@ -33,11 +33,12 @@ class WxAppApi
 	 * @throws WxPayException
 	 * @return 成功时返回，其他抛异常
 	 */
-	public static function sendTplMsg($touser, $template_id, $form_id, $data, $timeOut = 6)
+	public static function sendTplMsg($touser, $template_id, $form_id, $data, $page='pages/index/index', $timeOut = 6)
 	{
 		$tplParam = array(
 			'touser'=>$touser, 
 			'template_id'=>$template_id, 
+			'page'=>$page,
 			'form_id'=>$form_id, 
 			'data'=>$data
 			);

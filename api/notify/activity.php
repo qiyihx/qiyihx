@@ -30,7 +30,7 @@ foreach ($activitys as $key => $activity) {
 	$data = array('keyword1' => $value1,'keyword2' => $value2,'keyword3' => $value3,'keyword4' => $value4);
 	print(json_encode($data));
 	$wxAppApi = new WxAppApi();
-	$result['result'] = $wxAppApi->sendTplMsg($activity['openid'], WxAppConfig::WX_TPL_MSG_ACTIVITY_BEGIN_NOTIFY, $activity['form_id'], $data, $timeOut = 6);
+	$result['result'] = $wxAppApi->sendTplMsg($activity['openid'], WxAppConfig::WX_TPL_MSG_ACTIVITY_BEGIN_NOTIFY, $activity['form_id'], $data, 'pages/activity-detail/index?id='. activity['id'], $timeOut = 6);
 	print(json_encode($result));
 }
 

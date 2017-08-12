@@ -21,10 +21,12 @@ $info['openid'] = $openidObj['openid'];
 $info['title'] = $_GET['title'];
 $info['detail'] = $_GET['detail'];
 $info['location'] = $_GET['location'];
+$info['type'] = $_GET['type'];
+$info['picurl'] = $_GET['picurl'];
 $info['date'] = $_GET['date'];
 $info['time'] = $_GET['time'];
-$info['user_name'] = $_GET['userName'];
-$info['form_id'] = $_GET['formId'];
+$info['user_name'] = $_GET['user_name'];
+$info['form_id'] = $_GET['form_id'];
 
 $result['data'] = Activity::save($info);
 
@@ -39,7 +41,7 @@ if($result['data'] == 0){
 	$value6 = array('value' => $datetime->format('Y-m-d H:i'),'color' => '#000000');
 	
 	$data = array('keyword1' => $value1,'keyword2' => $value2,'keyword3' => $value3,'keyword4' => $value4,'keyword5' => $value5, 'keyword6' => $value6);
-	$result['resultSendTplMsg'] = $wxAppApi->sendTplMsg($info['openid'], WxAppConfig::WX_TPL_MSG_ACTIVITY_CREATE, $info['form_id'], $data, $timeOut = 6);
+	$result['resultSendTplMsg'] = $wxAppApi->sendTplMsg($info['openid'], WxAppConfig::WX_TPL_MSG_ACTIVITY_CREATE, $info['form_id'], $data, 'pages/activity-list/index?from=me', $timeOut = 6);
 }else{
 	$result['retcode'] = "FAIL";
 	$result['retmsg'] = "失败";
