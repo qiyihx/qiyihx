@@ -25,14 +25,15 @@ class Activity
 		{
 			return -1;
 		}
-
 		if(trim($info['id']))
 		{
-			$info['update_time'] = time();
-			return MySql::update(DB_PRE.self::$activityTable,$info,"id='".$r['id']."'");
-			
+			$r=self::find($info['id']);	
 		}
-		else{
+		if($r && $r['openid'] == $info['openid']){
+			$info['update_time'] = time();
+			$info['status'] = '0';
+			return MySql::update(DB_PRE.self::$activityTable,$info,"id='".$r['id']."'");
+		}else{
 			$info['id'] = md5(time() . mt_rand(0,1000));
 			$info['create_time'] = time();
 			return MySql::insert(DB_PRE.self::$activityTable,$info);
