@@ -10,7 +10,7 @@ use phpWeChat\Config;
 
 !defined('IN_MANAGE') && exit('Access Denied!');
 
-$mod='member';
+$mod='wxapp';
 $file=@return_edefualt(str_callback_w($_GET['file']),'config');
 $action=@return_edefualt(str_callback_w($_GET['action']),'config');
 
@@ -23,7 +23,7 @@ switch($action)
 			operation_tips('参数配置成功！');
 		}
 		
-		include_once parse_admin_tlp($file.'-'.$action,'member');
+		include_once parse_admin_tlp($file.'-'.$action,'wxapp');
 		break;
 }
 ?>

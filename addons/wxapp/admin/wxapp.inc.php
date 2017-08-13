@@ -137,18 +137,18 @@ switch($action)
 	case 'banner':
 		if(isset($dosubmit))
 		{
-			if($levelid)
+			if($id)
 			{
-				$op=Banner::edit($info,$id);
+				$op=Banner::bannerEdit($info,$id);
 			}
 			else
 			{
-				$op=Banner::add($info);
+				$op=Banner::bannerAdd($info);
 			}
 
-			if($op>0)
+			if($op>=0)
 			{
-				operation_tips('banner'.($levelid?'编辑':'添加').'成功！','?mod=wxapp&file=wxapp&action=banner');
+				operation_tips('广告'.($id?'编辑':'添加').'成功！','?mod=wxapp&file=wxapp&action=banner');
 			}
 			else
 			{
@@ -161,17 +161,17 @@ switch($action)
 			switch($job)
 			{
 				case 'delete':
-					Banner::delete($levelids);
-					operation_tips('会员等级删除成功！');
+					Banner::bannerDelete($id);
+					operation_tips('广告删除成功！');
 					break 2;
 			}
 		}
 
 		$data=array();
 
-		if($levelid)
+		if($id)
 		{
-			$data=Banner::get($levelid);
+			$data=Banner::bannerGet($id);
 		}
 		include_once parse_admin_tlp($file.'-'.$action,$mod);
 		break;

@@ -32,10 +32,43 @@ class Banner
 		return $result;
 	}
 
-	public static function list()
+	public static function bannerList()
 	{
 		return MySql::fetchAll("SELECT * FROM `".DB_PRE.self::$mBannerTable."` WHERE 1 ORDER BY `id` ASC");
 
 	}
 
+
+	public static function bannerEdit($info,$id)
+
+	{
+		return MySql::update(DB_PRE.self::$mBannerTable,$info,"`id`='".$id ."'");
+
+	}
+
+	public static function bannerAdd($info)
+
+	{
+
+		$info['id'] = md5(time() . mt_rand(0,1000));
+		$info['createtime'] = time();
+		return MySql::insert(DB_PRE.self::$mBannerTable,$info,true);
+
+	}
+
+	public static function bannerGet($id='',$f='*')
+
+	{
+
+		$r=MySql::fetchOne("SELECT * FROM `".DB_PRE.self::$mBannerTable."` WHERE `id`='".$id ."'");
+		return $f=='*'?$r:$r[$f];
+
+	}
+
+	public static function bannerDelete($id)
+
+	{
+		return MySql::delete(DB_PRE.self::$mBannerTable,$id,'id');
+
+	}
 }

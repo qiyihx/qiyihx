@@ -10,7 +10,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>奇异幻想后台管理</title>
+    <title>奇异幻想后台管理-广告</title>
 
     <link rel="stylesheet" type="text/css" href="{__PW_PATH__}admin/template/css/common.css"/>
 
@@ -52,7 +52,7 @@
 
       <div class="crumb-wrap">
 
-          <div class="crumb-list"><i class="picurln-font"></i><a href="{__PW_PATH__}{__ADMIN_FILE__}?file=index&action=main">管理首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="{__PW_PATH__}{__ADMIN_FILE__}?mod={$mod}&file={$file}&action={$action}">会员等级</a></span></div>
+          <div class="crumb-list"><i class="picurln-font"></i><a href="{__PW_PATH__}{__ADMIN_FILE__}?file=index&action=main">管理首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="{__PW_PATH__}{__ADMIN_FILE__}?mod={$mod}&file={$file}&action={$action}">广告</a></span></div>
 
       </div>
 
@@ -78,21 +78,35 @@
 
                       <tr>
 
-                          <th class="tc" width="5%"><input id="checkAll" class="common-checkbox" checked="checked" title="全选/反选" type="checkbox"></th>
-
-                        <th width="6%">ID</th>
-
-                        <th width="32%">等级名称</th>
-
-                        <th width="46%">积分区间</th>
+                        <th width="6%">序号</th>
+                        <th width="16%">标题</th>
+                        <th width="12%">图片</th>
+                        <th width="20%">跳转地址</th>
+                        <th width="6%">类型</th>
+                        <th width="6%">状态</th>
+                        <th width="12%">创建时间</th>
 
               <th width="11%">管理</th>
 
                     </tr>
 
-{Banner::$mTotalPage}
-                   
 
+                   {loop Banner::bannerList() $r}
+                      <tr>
+                          <td>{$r['sort']}</td>
+                          <td>{$r['name']}</td>
+                          <td>{if $r['picurl']}<img src="{$r['picurl']}" style="max-width:55px; max-height:55px;">{/if}</td>
+                          <td>{$r['url']}</td>
+                          <td>{$r['type']}</td>
+                          <td>{$r['status']}</td>
+                          <td>{$r['createtime']}</td>
+                          <td>
+                              <a href="{__PW_PATH__}{__ADMIN_FILE__}?mod={$mod}&file={$file}&action={$action}&id={$r['id']}">编辑</a>
+                              &nbsp;&nbsp;&nbsp;
+                              <a onClick="if(!confirm('确定要删除该广告吗？删除后不可恢复！')){return false;}" href="{__PW_PATH__}{__ADMIN_FILE__}?mod={$mod}&file={$file}&action={$action}&job=delete&id={$r['id']}">删除</a>
+                          </td>
+                      </tr>
+                     {/loop}
                   </table>
 
               </div>
@@ -121,7 +135,7 @@
 
                               <tr class="formtr">
 
-                                    <th class="formth"><i class="require-red">*</i>等级名称：</th>
+                                    <th class="formth"><i class="require-red">*</i>标题：</th>
 
                                     <td class="formtd">
 
@@ -133,7 +147,7 @@
 
                 <tr class="formtr">
 
-                                    <th class="formth"><i class="require-red">*</i>等级图标：</th>
+                                    <th class="formth"><i class="require-red">*</i>图片：</th>
 
                                     <td class="formtd">
 
@@ -145,13 +159,54 @@
 
                 <tr class="formtr">
 
-                                    <th class="formth"><i class="require-red">*</i>升级积分区间：</th>
+                                    <th class="formth"><i class="require-red">*</i>跳转地址：</th>
 
                                     <td class="formtd">
 
-                                  <input type="text" class="common-text" name="info[mincredits]" size="4" value="{$data['mincredits']}" /> 分 - <input type="text" class="common-text" name="info[maxcredits]" size="4" value="{$data['maxcredits']}" /> 分
-
+                                  <input type="text" class="common-text" name="info[url]" size="64" value="{$data['url']}" />
                                     </td>
+
+                                </tr>
+                <tr class="formtr">
+                                    <th class="formth"><i class="require-red">*</i>序号：</th>
+
+                                    <td class="formtd">
+
+                                  <input type="text" class="common-text" name="info[sort]" size="2" value="{$data['sort']}" />
+                                    </td>
+
+                                </tr>
+                 <tr class="formtr">
+
+                                    <th class="formth"><i class="require-red">*</i>类型：</th>
+
+                                    <td class="formtd">
+
+                                 <select name="info[type]">
+                                        <label>
+                                              <option value="0" <?php if($data[type] == '0') echo"selected"; ?>>通用</option>
+                                              <option value="1" <?php if($data[type] == '1') echo"selected"; ?>>微信小程序</option>
+                                              <option value="2" <?php if($data[type] == '2') echo"selected"; ?>>PC端</option>
+                                              <option value="3" <?php if($data[type] == '3') echo"selected"; ?>>移动端</option>
+                                         </label>
+
+                                    </select>
+                                    </td>
+
+                                </tr>
+                  <tr class="formtr">
+
+                              <th class="formth" width="20%"><i class="require-red">*</i>状态：</th>
+
+                              <td class="formtd">
+                                  <select name="info[status]">
+                                        <label>
+                                              <option value="0" <?php if($data[status] == '0') echo"selected"; ?>>隐藏</option>
+                                              <option value="1" <?php if($data[status] == '1') echo"selected"; ?>>显示</option>
+                                         </label>
+
+                                    </select>
+                                </td>
 
                                 </tr>
 
@@ -181,7 +236,7 @@
 
   </div>
 
-    <div class="statics-footer"> Powered by phpWeChat V{__PHPWECHAT_VERSION__}{__PHPWECHAT_RELEASE__} © , Processed in {php echo microtime()-$PW['time_start'];} second(s) , {MySql::$mQuery} queries <a href="#">至顶端↑</a></div>
+    <div class="statics-footer"> Powered by QiyiHx V{__PHPWECHAT_VERSION__}{__PHPWECHAT_RELEASE__} © , Processed in {php echo microtime()-$PW['time_start'];} second(s) , {MySql::$mQuery} queries <a href="#">至顶端↑</a></div>
 
 </body>
 

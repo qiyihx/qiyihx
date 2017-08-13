@@ -337,6 +337,11 @@ class Mysql
 		return self::query("delete from {$tbName} where {$where}");
 	}
 
+	public static function delete($tbName,$id,$filedName='id')
+	{
+		return self::query("delete from {$tbName} where {$tbName}.{$filedName} = '$id'");
+	}
+
 	public static function getFields($table)
 	{
 		$fields=array();
