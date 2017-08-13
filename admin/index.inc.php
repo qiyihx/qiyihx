@@ -235,6 +235,25 @@ switch($action)
 			{
 				$menu.='<li><a href="'.PW_PATH.ADMIN_FILE.'?mod=wechat&file=core&action=youaskservice" onclick="setMenu($(this).parent().parent().attr(\'id\'));" target="iframe-wrap"><i class="icon-font">&#xe038;</i>人工多客服</a></li>';
 			}
+			if($_roleid==-1 || isset($_privileges['wechat']['youaskservice']))
+			{
+				$menu.='<li><a href="'.PW_PATH.ADMIN_FILE.'?mod=wechat&file=core&action=youaskservice" onclick="setMenu($(this).parent().parent().attr(\'id\'));" target="iframe-wrap"><i class="icon-font">&#xe038;</i>广告管理</a></li>';
+			}
+			$menu.='</ul></li>';
+		}
+
+
+		if($modulekey=='5f04a16bb093201b')
+		{
+			$menu.='<li><a href="javascript:void(0);" onclick="$(\'#sub-menu-wxapp\').toggle();"><i class="icon-font">&#xe058;</i>核心功能</a><ul class="sub-menu" id="sub-menu-wxapp">';
+			$menu.='<li><a href="'.PW_PATH.ADMIN_FILE.'?mod=wxapp&file=config&action=config" onclick="setMenu($(this).parent().parent().attr(\'id\'));" target="iframe-wrap"><i class="icon-font">&#xe017;</i>配置选项</a></li>';
+			$menu.='<li><a href="'.PW_PATH.ADMIN_FILE.'?mod=wxapp&file=wxapp&action=level" onclick="setMenu($(this).parent().parent().attr(\'id\'));" target="iframe-wrap"><i class="icon-font">&#xe031;</i>会员等级管理</a></li>';
+			$menu.='<li><a href="'.PW_PATH.ADMIN_FILE.'?mod=wxapp&file=wxapp&action=banner" onclick="setMenu($(this).parent().parent().attr(\'id\'));" target="iframe-wrap"><i class="icon-font">&#xe031;</i>banner管理</a></li>';
+			$menu.='<li><a href="'.PW_PATH.ADMIN_FILE.'?mod=wxapp&file=wxapp&action=wxapp" onclick="setMenu($(this).parent().parent().attr(\'id\'));" target="iframe-wrap"><i class="icon-font">&#xe014;</i>会员管理</a></li>';
+			$menu.='<li><a href="'.PW_PATH.ADMIN_FILE.'?mod=wxapp&file=wxapp&action=login_log" onclick="setMenu($(this).parent().parent().attr(\'id\'));" target="iframe-wrap"><i class="icon-font">&#xe060;</i>会员登录日志</a></li>';
+			$menu.='</ul></li><li><a href="javascript:void(0);" onclick="$(\'#sub-menu-finance\').toggle();"><i class="icon-font">&#xe060;</i>财务日志</a><ul class="sub-menu" id="sub-menu-finance">';
+			$menu.='<li><a href="'.PW_PATH.ADMIN_FILE.'?mod=wxapp&file=wxapp&action=credits_log" onclick="setMenu($(this).parent().parent().attr(\'id\'));" target="iframe-wrap"><i class="icon-font">&#xe022;</i>会员积分日志</a></li>';
+			$menu.='<li><a href="'.PW_PATH.ADMIN_FILE.'?mod=wxapp&file=wxapp&action=amount_log" onclick="setMenu($(this).parent().parent().attr(\'id\'));" target="iframe-wrap"><i class="icon-font">&#xe064;</i>会员余额日志</a></li>';
 			$menu.='</ul></li>';
 		}
 

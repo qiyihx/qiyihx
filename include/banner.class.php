@@ -32,4 +32,10 @@ class Banner
 		return $result;
 	}
 
+	public static function list()
+	{
+		return MySql::fetchAll("SELECT * FROM `".DB_PRE.self::$mBannerTable."` WHERE 1 ORDER BY `id` ASC");
+
+	}
+
 }
