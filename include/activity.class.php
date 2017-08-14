@@ -36,6 +36,7 @@ class Activity
 		}else{
 			$info['id'] = md5(time() . mt_rand(0,1000));
 			$info['create_time'] = time();
+			$info['update_time'] = time();
 			return MySql::insert(DB_PRE.self::$activityTable,$info);
 		}
 	}
@@ -173,5 +174,53 @@ class Activity
 		return MySql::fetchOne("SELECT * FROM `".DB_PRE.self::$activityjoinTable."` WHERE `".DB_PRE.self::$activityjoinTable."`.`activity_id`='$activity_id' and `".DB_PRE.self::$activityjoinTable."`.`openid`='$openid'");
 	}
 
+
+	public static function activityList()
+	{
+		return MySql::fetchAll("SELECT * FROM `".DB_PRE.self::$activityTable."` WHERE 1 ORDER BY `update_time` DESC");
+
+	}
+
+
+	public static function activityEdit($info,$id)
+
+	{
+		return MySql::update(DB_PRE.self::$activityTable,$info,"`id`='".$id ."'");
+
+	}
+
+	public static function activityUpdateStatus($id, $status)
+
+	{
+		$info = array('status' => $status, 'update_time' => time());
+		return MySql::update(DB_PRE.self::$activityTable,$info,"`id`='".$id ."'");
+
+	}
+
+	public static function activityAdd($info)
+
+	{
+
+		$info['id'] = md5(time() . mt_rand(0,1000));
+		$info['createtime'] = time();
+		return MySql::insert(DB_PRE.self::$activityTable,$info,true);
+
+	}
+
+	public static function activityGet($id='',$f='*')
+
+	{
+
+		$r=MySql::fetchOne("SELECT * FROM `".DB_PRE.self::$activityTable."` WHERE `id`='".$id ."'");
+		return $f=='*'?$r:$r[$f];
+
+	}
+
+	public static function activityDelete($id)
+
+	{
+		return MySql::delete(DB_PRE.self::$activityTable,$id,'id');
+
+	}
 
 }

@@ -8,6 +8,7 @@
 // +----------------------------------------------------------------------
 use phpWeChat\Member;
 use phpWeChat\Banner;
+use phpWeChat\Activity;
 
 
 !defined('IN_MANAGE') && exit('Access Denied!');
@@ -172,6 +173,58 @@ switch($action)
 		if($id)
 		{
 			$data=Banner::bannerGet($id);
+		}
+		include_once parse_admin_tlp($file.'-'.$action,$mod);
+		break;
+	/**
+	 * banner操作
+	 */
+	case 'activity':
+		if(isset($dosubmit))
+		{
+			if($id)
+			{
+				$op=Activity::activityEdit($info,$id);
+			}
+			else
+			{
+				$op=Activity::activityAdd($info);
+			}
+
+			if($op>=0)
+			{
+				operation_tips('活动'.($id?'编辑':'添加').'成功！','?mod=wxapp&file=wxapp&action=activity');
+			}
+			else
+			{
+				operation_tips('操作失败 ['.$op.']！','','error');
+			}
+		}
+
+		if(isset($job))
+		{
+			switch($job)
+			{
+				case 'delete':
+					Activity::activityDelete($id);
+					operation_tips('活动删除成功！');
+					break 2;
+				case 'across':
+					Activity::activityUpdateStatus($id,'1');
+					operation_tips('活动通过操作成功！');
+					break 2;
+				case 'noacross':
+					Activity::activityUpdateStatus($id,'2');
+					operation_tips('活动不通过操作成功！');
+					break 2;
+			}
+		}
+
+		$data=array();
+
+		if($id)
+		{
+			$data=Activity::activityGet($id);
 		}
 		include_once parse_admin_tlp($file.'-'.$action,$mod);
 		break;

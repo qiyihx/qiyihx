@@ -97,8 +97,16 @@
                           <td>{$r['name']}</td>
                           <td>{if $r['picurl']}<img src="{$r['picurl']}" style="max-width:55px; max-height:55px;">{/if}</td>
                           <td>{$r['url']}</td>
-                          <td>{$r['type']}</td>
-                          <td>{$r['status']}</td>
+                          <td>
+                            <?php if($r['type'] == '0') echo"通用"; ?>
+                            <?php if($r['type'] == '1') echo"小程序"; ?>
+                            <?php if($r['type'] == '2') echo"PC端"; ?>
+                            <?php if($r['type'] == '3') echo"手机端"; ?> 
+                          </td>
+                          <td>
+                            <?php if($r['status'] == '0') echo"隐藏"; ?>
+                            <?php if($r['status'] == '1') echo"显示"; ?>
+                          </td>
                           <td>{$r['createtime']}</td>
                           <td>
                               <a href="{__PW_PATH__}{__ADMIN_FILE__}?mod={$mod}&file={$file}&action={$action}&id={$r['id']}">编辑</a>
