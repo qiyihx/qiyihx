@@ -22,6 +22,7 @@ class WxAppApi
 	public static function getOpenid($appid, $appsecret, $js_code, $timeOut = 6)
 	{
 		$url = "https://api.weixin.qq.com/sns/jscode2session?appid=$appid&secret=$appsecret&js_code=$js_code&grant_type=authorization_code";
+
 		$httpUtil = new HttpUtil();
 		$result = $httpUtil->sendGet($url);
 		return $result;

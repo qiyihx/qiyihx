@@ -8,11 +8,9 @@
 
 	$result = array('retcode' => 'SUCCESS', 'retmsg' => '成功');
 	$wxAppApi = new WxAppApi();
-	$openidObj = $wxAppApi->getOpenid(WxAppConfig::APPID, WxAppConfig::APPSECRET, $_GET['code']);	
+	$openidObj = $wxAppApi->getOpenid(WxAppConfig::APPID, WxAppConfig::APPSECRET, $_GET['code']);
 	$wxBizDataCrypt = new WxBizDataCrypt(WxAppConfig::APPID, $openidObj['session_key']);
 	$errCode = $wxBizDataCrypt->decryptData($_GET['encryptedData'], $_GET['iv'], $data );
-
-
 	$stepInfoList = json_decode($data)->stepInfoList;
 
 	$stepArray = array();
