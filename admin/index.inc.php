@@ -2,9 +2,9 @@
 // +----------------------------------------------------------------------
 // | phpWeChat 管理员首页入口文件 Last modified 2016/6/15 17:03
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2017 phpWeChat http://www.qiyihx.com All rights reserved.
+// | Copyright (c) 2016-2017 phpWeChat https://qiyihx.cn All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: ITS.ME <616743670@qq.com> <http://www.qiyihx.com>
+// | Author: ITS.ME <616743670@qq.com> <https://qiyihx.cn>
 // +----------------------------------------------------------------------
 use phpWeChat\PclZip;
 use phpWeChat\Module;

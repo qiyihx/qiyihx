@@ -2,9 +2,9 @@
 // +----------------------------------------------------------------------
 // | phpWeChat 数据库备份类 Last modified 2016/7/4 17:05
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2017 phpWeChat http://www.qiyihx.com All rights reserved.
+// | Copyright (c) 2016-2017 phpWeChat https://qiyihx.cn All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: ITS.ME<616743670@qq.com> <http://www.qiyihx.com>
+// | Author: ITS.ME<616743670@qq.com> <https://qiyihx.cn>
 // +----------------------------------------------------------------------
 namespace phpWeChat;
 

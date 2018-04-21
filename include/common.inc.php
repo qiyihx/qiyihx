@@ -2,9 +2,9 @@
 // +----------------------------------------------------------------------
 // | phpWeChat 公共文件 Last modified 2016-03-25 10:41
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2017 phpWeChat http://www.qiyihx.com All rights reserved.
+// | Copyright (c) 2016-2017 phpWeChat https://qiyihx.cn All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: ITS.ME <616743670@qq.com> <http://www.qiyihx.com>
+// | Author: ITS.ME <616743670@qq.com> <https://qiyihx.cn>
 // +----------------------------------------------------------------------
 
 PHP_VERSION < '5.3' && exit("PHP 5.3+ is required!");

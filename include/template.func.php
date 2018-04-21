@@ -2,9 +2,9 @@
 // +----------------------------------------------------------------------
 // | phpWeChat 模板解析函数库 Last modified 2016-04-08 22:04
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2017 phpWeChat http://www.qiyihx.com All rights reserved.
+// | Copyright (c) 2016-2017 phpWeChat https://qiyihx.cn All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: ITS.ME <616743670@qq.com> <http://www.qiyihx.com>
+// | Author: ITS.ME <616743670@qq.com> <https://qiyihx.cn>
 // +----------------------------------------------------------------------
 use phpWeChat\Cache;
 use phpWeChat\Module;

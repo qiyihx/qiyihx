@@ -2,9 +2,9 @@
 // +----------------------------------------------------------------------
 // | phpWeChat 微信支付操作类 Last modified 2016/5/6
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2017 phpWeChat http://www.qiyihx.com All rights reserved.
+// | Copyright (c) 2016-2017 phpWeChat https://qiyihx.cn All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: ITS.ME <616743670@qq.com> <http://www.qiyihx.com>
+// | Author: ITS.ME <616743670@qq.com> <https://qiyihx.cn>
 // +----------------------------------------------------------------------
 
 require_once dirname(__FILE__)."/lib/WxPay.Api.php";

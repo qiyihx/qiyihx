@@ -2,9 +2,9 @@
 // +----------------------------------------------------------------------
 // | phpWeChat 数据库管理入口文件 Last modified 22016-04-11 21:44
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2017 phpWeChat http://www.qiyihx.com All rights reserved.
+// | Copyright (c) 2016-2017 phpWeChat https://qiyihx.cn All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: ITS.ME <616743670@qq.com> <http://www.qiyihx.com>
+// | Author: ITS.ME <616743670@qq.com> <https://qiyihx.cn>
 // +----------------------------------------------------------------------
 use phpWeChat\dbBak;
 use phpWeChat\MySql;
